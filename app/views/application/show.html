@@ -14,50 +14,64 @@
         <p class="govuk-!-margin-bottom-6">You’ve completed 0 of 3 sections.</p>
   
 
-       {{ appTaskList({
-        disableSectionNumbering: true,
-        sections: [{
-          titleText: "About you",
-          items: [{
-            text: "Personal details",
-            href: "/",
-            tag: {
-              colour: "grey",
-              text: "Not started"
-              
-            }
-          }]
-        }, {
-          titleText: "Juggling experience",
-          items: [{
-            text: "Juggling experience",
-            href: "/",
-            tag: {
-              colour: "grey",
-              text: "Not started"
-            }
-          }]
-        }, {
-          titleText: "Evidence",
-          items: [{
-            text: "Evidence",
-            href: "/",
-            tag: {
-              colour: "grey",
-              text: "Not started"
-            }
-          }]
-        }]
-      }) }}
 
-      <h2 class="govuk-heading-m">
-        Review application
-      </h2>
+        {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 
-      {{ govukButton({
-        text: "Review and send",
-        href: '/application/check'
-      }) }}
+{{ govukTaskList({
+  disableSectionNumbering: true,
+  idPrefix: "about-you",
+  items: [
+    {
+      title: { 
+        text: "Personal details"
+      },
+      href: "#",
+      status: {
+        tag: {
+        text: "Not started",
+        classes: "govuk-tag--blue"
+      }
+    }
+    },
+    {
+      title: {
+        text: "Juggling experience"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--blue"
+        }
+      }
+    },
+    {
+      title: {
+        text: "Evidence"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--blue"
+        }
+      }
+    },
+    {
+      title: {
+        text: "References"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--blue"
+        }
+      }
+    }
+  ]
+}) }}
+
 
     </div>
   </div>
