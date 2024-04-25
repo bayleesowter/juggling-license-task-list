@@ -32,8 +32,15 @@ router.post('/email-address', (req, res) => {
 
 
 router.post('/code', (req, res) => {
+   req.session.data.user = {}
    res.redirect('/application')
 })
 
 
+router.get('/account/signout', (req, res) => {
+  delete req.session.data.user
+   res.redirect('/has-account')
+})
+
 require('./routes/application/show')(router)
+require('./routes/application/edit-personal-details')(router)

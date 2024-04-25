@@ -16,7 +16,7 @@
 
 
         {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
-
+       {{ data.personalDetails.status | statusColour}}
 {{ govukTaskList({
   disableSectionNumbering: true,
   idPrefix: "about-you",
@@ -25,11 +25,11 @@
       title: { 
         text: "Personal details"
       },
-      href: "#",
+      href: "/application/edit-personal-details/name",
       status: {
         tag: {
-        text: "Not started",
-        classes: "govuk-tag--blue"
+          color: data.personalDetails.status | statusColour,
+        text: data.personalDetails.status or "Not started"
       }
     }
     },
@@ -40,8 +40,7 @@
       href: "#",
       status: {
         tag: {
-          text: "Incomplete",
-          classes: "govuk-tag--blue"
+          text: "Incomplete"
         }
       }
     },
@@ -52,8 +51,7 @@
       href: "#",
       status: {
         tag: {
-          text: "Incomplete",
-          classes: "govuk-tag--blue"
+          text: "Incomplete"
         }
       }
     },
@@ -64,8 +62,7 @@
       href: "#",
       status: {
         tag: {
-          text: "Incomplete",
-          classes: "govuk-tag--blue"
+          text: "Incomplete"
         }
       }
     }
