@@ -12,62 +12,44 @@
           Application incomplete
         </h2>
         <p class="govuk-!-margin-bottom-6">You’ve completed 0 of 3 sections.</p>
-  
 
 
-        {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
-       {{ data.personalDetails.status | statusColour}}
-{{ govukTaskList({
-  disableSectionNumbering: true,
-  idPrefix: "about-you",
-  items: [
-    {
-      title: { 
-        text: "Personal details"
-      },
-      href: "/application/edit-personal-details/name",
-      status: {
-        tag: {
-          color: data.personalDetails.status | statusColour,
-        text: data.personalDetails.status or "Not started"
-      }
-    }
-    },
-    {
-      title: {
-        text: "Juggling experience"
-      },
-      href: "#",
-      status: {
-        tag: {
-          text: "Incomplete"
-        }
-      }
-    },
-    {
-      title: {
-        text: "Evidence"
-      },
-      href: "#",
-      status: {
-        tag: {
-          text: "Incomplete"
-        }
-      }
-    },
-    {
-      title: {
-        text: "References"
-      },
-      href: "#",
-      status: {
-        tag: {
-          text: "Incomplete"
-        }
-      }
-    }
-  ]
-}) }}
+      {{ appTaskList({
+        disableSectionNumbering: true,
+        sections: [{
+          titleText: "About you",
+          items: [{
+            text: "Personal details",
+            href: "/application/edit-personal-details/name",
+            tag: {
+              colour: data.personalDetails.status | statusColour,
+              text: data.personalDetails.status or "Not started"
+            }
+          }]
+        }, {
+          titleText: "Juggling experience",
+          items: [{
+            text: "Juggling experience",
+            href: "/application/edit-experience/" + experiencePage,
+            tag: {
+              colour: data.jugglingExperience.status | statusColour,
+              text: data.jugglingExperience.status or "Not started"
+            }
+          }]
+        }, {
+          titleText: "Evidence",
+          items: [{
+            text: "Evidence",
+            href: "/application/edit-evidence/" + evidencePage,
+            tag: {
+              colour: data.evidence.status | statusColour,
+              text: data.evidence.status or "Not started"
+            }
+          }]
+        }]
+      }) }}
+
+
 
 
     </div>
